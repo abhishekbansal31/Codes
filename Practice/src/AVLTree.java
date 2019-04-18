@@ -1,4 +1,8 @@
+//    Implementation of AVL Tree
+
+
 import java.util.*;
+
 class NodeAVL{
 	int data,height;
 	NodeAVL left,right;
@@ -7,6 +11,7 @@ class NodeAVL{
 		this.height=1;
 	}
 }
+
 public class AVLTree {
 	NodeAVL root;
 	int height(NodeAVL node) {
@@ -15,9 +20,13 @@ public class AVLTree {
 		}
 		return node.height;
 	}
+	
+	
 	int balance(NodeAVL node) {
 		return height(node.left)-height(node.right);
 	}
+	
+	
 	NodeAVL leftRotation(NodeAVL node) {
 		NodeAVL right=node.right;
 		node.right=right.left;
@@ -45,6 +54,8 @@ public class AVLTree {
 		left.right=right;
 		return rightRight(node);
 	}*/
+	
+	
 	NodeAVL rightRotation(NodeAVL node) {
 		NodeAVL left=node.left;
 		node.left=left.right;
@@ -56,6 +67,8 @@ public class AVLTree {
 		left.height=Math.max(height(left.left),height(left.right));
 		return left;
 	}
+	
+	
 	NodeAVL insert(NodeAVL node,int data) {
 		if(node==null) {
 			return new NodeAVL(data);
@@ -69,25 +82,27 @@ public class AVLTree {
 		node.height=1+Math.max(height(node.left), height(node.right));
 		int balance=balance(node);
 		if(balance>1 && data<node.left.data) {
-			//LL
+			//LL - Left Left
 			node=rightRotation(node);
 		}
 		if(balance>1 && data>node.left.data) {
-			//LR
+			//LR - Left Right
 			node.left=leftRotation(node.left);			//converted to LL
 			node=rightRotation(node);
 		}
 		if(balance<-1 && data<node.right.data) {
-			//RL
+			//RL - Right Left
 			node.right=rightRotation(node.right);		//converted to RR
 			node=leftRotation(node);
 		}
 		if(balance<-1 && data>node.right.data) {
-			//RR
+			//RR - Right Right
 			node=leftRotation(node);
 		}
 		return node;
 	}
+	
+	
 	NodeAVL delete(NodeAVL node,int data) {
 		if(node==null) {
 			return null;
@@ -134,6 +149,8 @@ public class AVLTree {
 		}
 		return node;
 	}
+	
+	
 	void display(NodeAVL node) {
 		if(node==null) {
 			return;
@@ -142,6 +159,8 @@ public class AVLTree {
 		System.out.println(node.data);
 		display(node.right);
 	}
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
@@ -157,5 +176,5 @@ public class AVLTree {
 		break;
 		}
 	}
-
+	
 }

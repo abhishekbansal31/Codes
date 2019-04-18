@@ -75,8 +75,9 @@ public class Graph {
 			}
 		}
 	}
-	//	Topological Sort ( mainly used for Job Scheduling)
 	
+	
+	//	Topological Sort ( mainly used for Job Scheduling)
 	
 	void topologicalUtil(int vertex,Deque<Integer> stack,boolean[] visited) {
 		visited[vertex]=true;
@@ -187,7 +188,7 @@ public class Graph {
 			inStack[i]=false;
 		}
 		for(int i=0;i<V;i++) {
-			if(inStack[i]==false) {
+			if(desc[i]==-1) {
 				SCCUtil(i,inStack,desc,low,stack);
 			}
 		}
@@ -240,10 +241,10 @@ public class Graph {
 		g.addEdge(5, 0);
 		g.addEdge(6, 8);
 		if(sc.nextInt()==1) {
-			g.BFS(2);
+			g.BFS(0);
 		}
 		else{
-			g.DFS(2);
+			g.DFS(0);
 		}
 		sc.close();
 	}
