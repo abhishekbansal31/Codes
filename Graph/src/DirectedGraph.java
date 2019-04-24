@@ -287,7 +287,7 @@ public class DirectedGraph extends Graph {
 		int start = sc.nextInt();
 		
 	//	Create Undirectional Graph
-		DirectedGraph g = new DirectedGraph(size, start);
+		DirectedGraph graph = new DirectedGraph(size, start);
 
 		
 	//	Enter Number of Edges
@@ -302,7 +302,7 @@ public class DirectedGraph extends Graph {
 			
 	//	Invalid vertex Exception Handling
 			try {
-				g.addedge(vertex1 , vertex2);
+				graph.addedge(vertex1 , vertex2);
 			}catch(VertexOutOfBoundException vertexException) {
 				System.out.println("Previous line input is discarded, Enter again");
 				edges++;	
@@ -316,22 +316,22 @@ public class DirectedGraph extends Graph {
 		int choice = sc.nextInt();
 		switch(choice) {
 			case 1:
-				g.bfs();
+				graph.bfs();
 				break;
 			
 			case 2:
-				g.dfs();
+				graph.dfs();
 				break;
 				
 			case 3:
-				Stack<Integer> stack = g.topologicalSort();
+				Stack<Integer> stack = graph.topologicalSort();
 				while(!stack.isEmpty()) {
 					System.out.print(stack.pop()+" ");
 				}
 				break;
 				
 			case 4:
-				int mother = g.motherVertex();
+				int mother = graph.motherVertex();
 				if(mother==-1) {
 					System.out.println("\nGraph does not have any mother node");
 				}
@@ -341,17 +341,17 @@ public class DirectedGraph extends Graph {
 				break;
 				
 			case 5:
-				Graph reverseGraph=g.reverse();
+				Graph reverseGraph=graph.reverse();
 				reverseGraph.bfs();
 				
 				break;
 				
 			case 6:
-				g.kosaraju();
+				graph.kosaraju();
 				break;
 				
 			case 7:
-				g.tarjan();
+				graph.tarjan();
 				break;
 			
 			default:

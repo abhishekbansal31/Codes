@@ -98,7 +98,7 @@ public class UndirectedGraph extends Graph {
 		int size = sc.nextInt();
 
 	//	Create Undirectional Graph
-		Graph g = new UndirectedGraph(size);
+		Graph graph = new UndirectedGraph(size);
 
 	//	Enter Number of Edges
 		System.out.println("Enter number of Edges and from next line enter vertices seperated by space");
@@ -112,7 +112,7 @@ public class UndirectedGraph extends Graph {
 			
 	//	Invalid vertex Exception Handling
 			try {
-				g.addedge(vertex1 , vertex2);
+				graph.addedge(vertex1 , vertex2);
 			}catch(VertexOutOfBoundException vertexException) {
 				System.out.println("Previous line input is discarded, Enter again");
 				edges++;	
@@ -124,11 +124,11 @@ public class UndirectedGraph extends Graph {
 		int choice = sc.nextInt();
 		switch(choice) {
 			case 1:
-				g.bfs();
+				graph.bfs();
 				break;
 			
 			case 2:
-				g.dfs();
+				graph.dfs();
 				break;
 			
 			default:
